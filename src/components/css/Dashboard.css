@@ -1,0 +1,90 @@
+/* Dashboard.css */
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #f4f4f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .dashboard-container h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #3a86ff;
+    margin-bottom: 1.5rem;
+  }
+  
+  .add-task-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #3a86ff;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    transition: background-color 0.3s ease, transform 0.2s;
+  }
+  
+  .add-task-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .add-task-button:active {
+    background-color: #003f7f;
+    transform: scale(1);
+  }
+  
+  .task-list {
+    margin-top: 2rem;
+  }
+  
+  .task-list h3 {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .task-item {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .task-item:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .task-filter {
+    margin-bottom: 1.5rem;
+  }
+  
+  .task-filter label {
+    font-weight: bold;
+    color: #555;
+    margin-right: 0.5rem;
+  }
+  
+  .task-filter select {
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    outline: none;
+  }
+  
+  .task-filter select:focus {
+    border-color: #3a86ff;
+    box-shadow: 0 0 4px rgba(58, 134, 255, 0.5);
+  }
+  

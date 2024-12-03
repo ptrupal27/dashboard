@@ -1,0 +1,68 @@
+/* TaskForm.css */
+
+.task-form-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .task-form-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #333;
+  }
+  
+  .task-form-container input,
+  .task-form-container select,
+  .task-form-container button {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    outline: none;
+    box-sizing: border-box;
+  }
+  
+  .task-form-container input:focus,
+  .task-form-container select:focus {
+    border-color: #3a86ff;
+    box-shadow: 0 0 4px rgba(58, 134, 255, 0.5);
+  }
+  
+  .task-form-container button {
+    background-color: #3a86ff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .task-form-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  .task-form-container button:active {
+    background-color: #003f7f;
+  }
+  
+  .task-form-container select {
+    background-color: white;
+  }
+  
+  .task-form-container select option {
+    background-color: white;
+    color: #333;
+  }
+  
+  .task-form-container input[type="datetime-local"] {
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
