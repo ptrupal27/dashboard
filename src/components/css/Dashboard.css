@@ -1,90 +1,139 @@
-/* Dashboard.css */
-
+/* Dashboard container styling */
 .dashboard-container {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    background-color: #f4f4f9;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .dashboard-container h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: #3a86ff;
-    margin-bottom: 1.5rem;
-  }
-  
-  .add-task-button {
-    display: inline-block;
-    padding: 0.8rem 1.5rem;
-    background-color: #3a86ff;
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 6px;
-    margin-bottom: 2rem;
-    transition: background-color 0.3s ease, transform 0.2s;
-  }
-  
-  .add-task-button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-  }
-  
-  .add-task-button:active {
-    background-color: #003f7f;
-    transform: scale(1);
-  }
-  
-  .task-list {
-    margin-top: 2rem;
-  }
-  
-  .task-list h3 {
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-  .task-item {
+  margin-left: 260px; /* Matches navbar width */
+  padding: 2rem;
+  background: #f4f7fa;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.dashboard-container h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* Add Task button */
+.add-task-button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.add-task-button:hover {
+  background: linear-gradient(90deg, #00f2fe, #4facfe);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Task Filter */
+.task-filter {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.task-filter select,
+.task-filter input {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.task-filter select:focus,
+.task-filter input:focus {
+  border-color: #4facfe;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Task List container */
+.task-list {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.task-list h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.5rem;
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.task-item:hover {
+  background: #f1f9ff;
+  border-color: #4facfe;
+}
+
+.task-item .task-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.task-item .task-actions button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.task-item .task-actions button.edit {
+  background: #4facfe;
+  color: #fff;
+}
+
+.task-item .task-actions button.delete {
+  background: #ff6b6b;
+  color: #fff;
+}
+
+.task-item .task-actions button:hover {
+  opacity: 0.9;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .dashboard-container {
+    margin-left: 0;
     padding: 1rem;
-    margin-bottom: 1rem;
-    background-color: white;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
-  
-  .task-item:hover {
-    background-color: #f9f9f9;
-  }
-  
   .task-filter {
-    margin-bottom: 1.5rem;
+    flex-direction: column;
+    gap: 0.8rem;
   }
-  
-  .task-filter label {
-    font-weight: bold;
-    color: #555;
-    margin-right: 0.5rem;
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
-  
-  .task-filter select {
-    padding: 0.5rem;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    outline: none;
-  }
-  
-  .task-filter select:focus {
-    border-color: #3a86ff;
-    box-shadow: 0 0 4px rgba(58, 134, 255, 0.5);
-  }
-  
+}

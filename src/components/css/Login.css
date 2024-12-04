@@ -1,0 +1,134 @@
+/* General reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(120deg, #4facfe, #00f2fe);
+  }
+  
+  /* Flexbox container for centering */
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  
+  /* Login card styling */
+  .login-card {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 2rem 3rem;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    animation: slideIn 0.6s ease-in-out;
+  }
+  
+  /* Card animation */
+  @keyframes slideIn {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Title styling */
+  .login-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #333;
+    letter-spacing: 1px;
+    position: relative;
+  }
+  
+  .login-title::after {
+    content: '';
+    width: 50px;
+    height: 4px;
+    background: linear-gradient(90deg, #4facfe, #00f2fe);
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 4px;
+  }
+  
+  /* Input styling */
+  .login-input {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.8rem 0;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 1rem;
+    background: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-input:focus {
+    border-color: #4facfe;
+    outline: none;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Button styling */
+  .login-button {
+    background: linear-gradient(90deg, #4facfe, #00f2fe);
+    color: #ffffff;
+    border: none;
+    padding: 0.9rem 1.4rem;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .login-button:hover {
+    background: linear-gradient(90deg, #00f2fe, #4facfe);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* Add subtle link styling */
+  .login-link {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #4facfe;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .login-link:hover {
+    color: #00f2fe;
+  }
+  
+  /* Media query for mobile devices */
+  @media screen and (max-width: 480px) {
+    .login-card {
+      padding: 1.5rem 2rem;
+    }
+  
+    .login-title {
+      font-size: 1.8rem;
+    }
+  
+    .login-input,
+    .login-button {
+      font-size: 0.9rem;
+    }
+  }
+  

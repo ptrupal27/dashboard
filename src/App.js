@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
@@ -10,10 +10,16 @@ import "../src/App.css"
 function App() {
   const [tasks, setTasks] = useState([]); // Manage tasks at the App level
 
-  const handleAddTask = (newTask) => {
-    setTasks([...tasks, newTask]); // Add the new task to the existing tasks
-    console.log('Task added:', newTask); // Debugging log
+  const handleAddTask = (newTasks) => {
+    setTasks(newTasks); // Update the tasks state with new tasks
+    console.log('Task updated:', newTasks); // Debugging log
   };
+
+  useEffect(() => {
+    // Initialize tasks from localStorage when the app loads
+    const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    setTasks(storedTasks);
+  }, []);
 
   return (
     <div>

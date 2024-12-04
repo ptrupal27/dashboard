@@ -1,68 +1,116 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import TaskList from './TaskList';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import "../components/css/TaskForm.css";
 
-function TaskForm({ task = {}, onSubmit }) {
+function TaskForm({ onSubmit }) {
+  const location = useLocation();
+  const task = location.state?.task || {}; // Get task from location state (for editing)
+
   const [title, setTitle] = useState(task.title || '');
   const [priority, setPriority] = useState(task.priority || 'low');
   const [status, setStatus] = useState(task.status || 'not started');
   const [startDate, setStartDate] = useState(task.startDate || '');
-  const [endDate, setEndDate] = useState(task.endDate || '');                          
+  const [endDate, setEndDate] = useState(task.endDate || '');
+
   const navigate = useNavigate();
 
+  // Submit handler for adding or updating a task
   const handleSubmit = () => {
-    const newTask = { title, priority, status, startDate, endDate };
+    if (!title || !startDate || !endDate) {
+      alert('Please fill in all required fields.');
+      return;
+    }
 
-    // Retrieve tasks from localStorage
+    const newTask = {
+      ...task, // Retain task ID if editing
+      title,
+      priority,
+      status,
+      startDate,
+      endDate,
+    };
+
     const existingTasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    // Add the new or updated task
+
     if (task.id) {
       // Update existing task
       const updatedTasks = existingTasks.map((t) =>
-        t.id === task.id ? { ...t, ...newTask } : t
+        t.id === task.id ? newTask : t
       );
       localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+      onSubmit(updatedTasks); // Pass updated tasks to parent component
     } else {
       // Add new task
-      newTask.id = new Date().getTime(); // Generate unique ID
+      newTask.id = new Date().getTime(); // Generate a new ID for new tasks
       localStorage.setItem('tasks', JSON.stringify([...existingTasks, newTask]));
+      onSubmit([...existingTasks, newTask]); // Pass new tasks to parent component
     }
 
-    onSubmit(newTask); // Pass new task to parent component (if needed)
-    navigate('/dashboard');
+    navigate('/dashboard'); // Navigate back to the dashboard
   };
 
   return (
     <div className="task-form-container">
-      <h2>{task.title ? 'Edit Task' : 'New Task'}</h2>
-      <input
-        type="text"
-        placeholder="Task Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-      </select>
-      <select value={status} onChange={(e) => setStatus(e.target.value)}>
-        <option value="not started">Not Started</option>
-        <option value="in progress">In Progress</option>
-        <option value="finished">Finished</option>
-      </select>
-      <input
-        type="datetime-local"
-        value={startDate}
-        onChange={(e) => setStartDate(e.target.value)}
-      />
-      <input
-        type="datetime-local"
-        value={endDate}
-        onChange={(e) => setEndDate(e.target.value)}
-      />
-      <button onClick={handleSubmit}>Save Task</button>
+      <h2>{task.id ? 'Edit Task' : 'New Task'}</h2>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+      >
+        <label>
+          Task Title:
+          <input
+            type="text"
+            placeholder="Enter task title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </label>
+
+        <label>
+          Priority:
+          <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </label>
+
+        <label>
+          Status:
+          <select value={status} onChange={(e) => setStatus(e.target.value)}>
+            <option value="not started">Not Started</option>
+            <option value="in progress">In Progress</option>
+            <option value="finished">Finished</option>
+          </select>
+        </label>
+
+        <label>
+          Start Date:
+          <input
+            type="datetime-local"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+            required
+          />
+        </label>
+
+        <label>
+          End Date:
+          <input
+            type="datetime-local"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
+            required
+          />
+        </label>
+
+        <button type="submit" className="save-task-button">
+          Save Task
+        </button>
+      </form>
     </div>
   );
 }
